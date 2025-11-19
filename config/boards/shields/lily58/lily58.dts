@@ -1,0 +1,4 @@
+// Example of how power is usually enabled in the shield's base DTS file
+&pro_micro {
+    zephyr,display-power-enable;
+};
