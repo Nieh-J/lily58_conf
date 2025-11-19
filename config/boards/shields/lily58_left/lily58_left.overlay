@@ -1,0 +1,26 @@
+/ {
+    encoders {
+        compatible = "ec11";
+        status = "okay";
+        encoder_left: encoder_left {
+            a-gpios = <&gpio0 31 (GPIO_PULL_UP | GPIO_ACTIVE_HIGH)>;
+            b-gpios = <&gpio0 32 (GPIO_PULL_UP | GPIO_ACTIVE_HIGH)>;
+            // The "steps" property may need adjustment based on your specific encoder model
+            steps = <4>; 
+            status = "okay";
+        };
+    };
+
+    // Add the encoder to the list of sensors ZMK should use
+    sensors {
+        compatible = "zmk,sensors";
+        #address-cells = <1>;
+        #size-cells = <0>;
+        
+        encoder_left_sensor: encoder_left_sensor@0 {
+            compatible = "zmk,encoder-sensor";
+            status = "okay";
+            encoder = <&encoder_left>;
+        };
+    };
+};
