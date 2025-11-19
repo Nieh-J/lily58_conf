@@ -1,38 +1,13 @@
-/ {
-    encoders {
-        compatible = "ec11";
-        status = "okay";
-        encoder_left: encoder_left {
-            a-gpios = <&gpio0 31 (GPIO_PULL_UP | GPIO_ACTIVE_HIGH)>;
-            b-gpios = <&gpio0 32 (GPIO_PULL_UP | GPIO_ACTIVE_HIGH)>;
-            // The "steps" property may need adjustment based on your specific encoder model
-            steps = <4>; 
-            status = "okay";
-        };
-    };
-
-    // Add the encoder to the list of sensors ZMK should use
-    sensors {
-        compatible = "zmk,sensors";
-        #address-cells = <1>;
-        #size-cells = <0>;
-        
-        encoder_left_sensor: encoder_left_sensor@0 {
-            compatible = "zmk,encoder-sensor";
-            status = "okay";
-            encoder = <&encoder_left>;
-        };
-    };
-};
+// This line includes the default shield definitions, including I2C configuration
+#include "../lily58.dtsi" 
 
 &default_display {
-    // Rotates the display 180 degrees if not set to reverse mode
+    // Rotation for the left side
     #if defined(CONFIG_ZMK_DISPLAY_STATUS_SCREEN_REVERSE)
     rotation = <0>;
     #else
     rotation = <180>;
     #endif
-};
 
     widgets {
         status_screen {
@@ -54,8 +29,33 @@
 };
 
 / {
+    // Encoder definition
+    encoders {
+        compatible = "ec11";
+        status = "okay";
+        encoder_left: encoder_left {
+            // Using pin numbers 31 and 32 on GPIO controller 0
+            a-gpios = <&gpio0 31 (GPIO_PULL_UP | GPIO_ACTIVE_HIGH)>;
+            b-gpios = <&gpio0 32 (GPIO_PULL_UP | GPIO_ACTIVE_HIGH)>;
+            steps = <4>; 
+            status = "okay";
+        };
+    };
+    
+    // Sensor binding definition for the encoder
+    sensors {
+        compatible = "zmk,sensors";
+        #address-cells = <1>;
+        #size-cells = <0>;
+        
+        encoder_left_sensor: encoder_left_sensor@0 {
+            compatible = "zmk,encoder-sensor";
+            status = "okay";
+            encoder = <&encoder_left>;
+        };
+    };
+
     behaviors {
-        // This is necessary to define the 'behaviors' node the widgets reference internally
         compatible = "zmk,behaviors";
         label = "ZMK_BEHAVIORS";
     };
