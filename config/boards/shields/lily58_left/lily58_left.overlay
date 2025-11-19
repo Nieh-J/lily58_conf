@@ -24,3 +24,12 @@
         };
     };
 };
+
+&default_display {
+    // Rotates the display 180 degrees if not set to reverse mode
+    #if defined(CONFIG_ZMK_DISPLAY_STATUS_SCREEN_REVERSE)
+    rotation = <0>;
+    #else
+    rotation = <180>;
+    #endif
+};
