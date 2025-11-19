@@ -33,7 +33,7 @@
             >;
 
 // removed: &mo 2
-//added: &ext_power EP_TOG  
+//added: &ext_power EP_TOG
 
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
