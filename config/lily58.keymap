@@ -36,9 +36,8 @@
 //added: &ext_power EP_TOG  
 
 
-            sensor-bindings = <
-                &inc_dec_kp C_VOL_UP C_VOL_DN // Maps clockwise to Volume Up, CCW to Volume Down
-            >; // <-- ADD A SEMICOLON HERE
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
 
         };
 
