@@ -1,11 +1,12 @@
+#include "../lily58.dtsi"
+
 &default_display {
-    // Rotates the display 0 degrees (normal orientation) if not set to reverse mode
+    // Rotation for the right side
     #if defined(CONFIG_ZMK_DISPLAY_STATUS_SCREEN_REVERSE)
     rotation = <180>;
     #else
     rotation = <0>;
     #endif
-};
 
     widgets {
         status_screen {
@@ -28,7 +29,6 @@
 
 / {
     behaviors {
-        // This is necessary to define the 'behaviors' node the widgets reference internally
         compatible = "zmk,behaviors";
         label = "ZMK_BEHAVIORS";
     };
