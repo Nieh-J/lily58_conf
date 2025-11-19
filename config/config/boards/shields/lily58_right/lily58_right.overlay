@@ -1,0 +1,8 @@
+&default_display {
+    // Rotates the display 0 degrees (normal orientation) if not set to reverse mode
+    #if defined(CONFIG_ZMK_DISPLAY_STATUS_SCREEN_REVERSE)
+    rotation = <180>;
+    #else
+    rotation = <0>;
+    #endif
+};
