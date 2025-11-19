@@ -6,3 +6,30 @@
     rotation = <0>;
     #endif
 };
+
+    widgets {
+        status_screen {
+            compatible = "zmk,widget-status-screen";
+            status {
+                compatible = "zmk,widget-output-status";
+                position = <0 0>;
+            };
+            battery {
+                compatible = "zmk,widget-battery-status";
+                position = <0 9>;
+            };
+            layer {
+                compatible = "zmk,widget-layer-status";
+                position = <0 25>;
+            };
+        };
+    };
+};
+
+/ {
+    behaviors {
+        // This is necessary to define the 'behaviors' node the widgets reference internally
+        compatible = "zmk,behaviors";
+        label = "ZMK_BEHAVIORS";
+    };
+};
