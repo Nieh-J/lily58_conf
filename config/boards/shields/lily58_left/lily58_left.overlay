@@ -2,12 +2,12 @@
 #include "../lily58.dtsi" 
 
 &default_display {
-    // Rotation for the left side
-    #if defined(CONFIG_ZMK_DISPLAY_STATUS_SCREEN_REVERSE)
-    rotation = <0>;
-    #else
+    compatible = "ssd1306";
+    reg = <0x3C>;                    // I2C address
+    width = <128>;
+    height = <32>;
     rotation = <180>;
-    #endif
+    status = "okay";
 
     widgets {
         status_screen {
@@ -27,6 +27,7 @@
         };
     };
 };
+
 
 / {
     // Encoder definition
