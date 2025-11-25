@@ -23,15 +23,7 @@
                 compatible = "zmk,widget-layer-status";
                 position = <0 25>;
             };
-             caps_lock {
-                compatible = "zmk,widget-hid-indicators-status";
-                position = <70 0>; // Example position (adjust as needed)
-            };
-            wpm {
-                compatible = "zmk,widget-wpm-status";
-                position = <70 9>; // Example position (adjust as needed)
 
-            };
         };
     };
 };
